@@ -1,0 +1,60 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.outdidev.ev_app"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.outdidev.ev_app"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'chelladurai'  // Replace with your key alias
+            keyPassword 'Outdid@123'  // Replace with your key password
+            storeFile file('./my-release-key.keystore')  // Path to your keystore file
+            storePassword 'Outdid@123'  // Replace with your keystore password
+        }
+
+        debug {
+            keyAlias 'androiddebugkey'  // Replace with your key alias for debug
+            keyPassword 'android'  // Replace with your debug key password
+            storeFile file('./debug.keystore')  // Path to your keystore file (can use the same one as release)
+            storePassword 'android'  // Replace with your debug keystore password
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release  // Apply release signing config
+        }
+
+        debug {
+            signingConfig signingConfigs.debug  // Apply debug signing config
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}

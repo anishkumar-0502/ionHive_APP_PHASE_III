@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- The language used in the development environment -->
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+
+	<!-- The display name of the app on the device home screen -->
+	<key>CFBundleDisplayName</key>
+	<string>Ionhive</string>
+
+	<!-- The name of the executable binary file -->
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+
+	<!-- The unique identifier for the app -->
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+
+	<!-- The version of the app's info dictionary -->
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+
+	<!-- The name of the app -->
+	<key>CFBundleName</key>
+	<string>ionhive</string>
+
+	<!-- The type of the app package -->
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+
+	<!-- The short version of the app (visible to users) -->
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+
+	<!-- Signature used for app identification -->
+	<key>CFBundleSignature</key>
+	<string>????</string>
+
+	<!-- The build number of the app -->
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+
+	<!-- Specifies if the app requires iPhone OS -->
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+
+	<!-- The name of the launch storyboard -->
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+
+	<!-- The main storyboard file for the app -->
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+
+	<!-- Supported interface orientations for iPhone -->
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+
+	<!-- Supported interface orientations for iPad -->
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+
+	<!-- Disables minimum frame duration on iPhones (useful for high-performance rendering) -->
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+
+	<!-- Support for indirect input events (e.g., touch events) -->
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+
+	<!-- Hide the status bar -->
+	<key>UIStatusBarHidden</key>
+	<true/>
+
+	<!-- Controls whether the status bar appearance is managed by the view controller -->
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+
+	<!-- Location permission usage description -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to check connectivity</string>
+
+	<!-- Bluetooth permissions (for iOS 13+) -->
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>We need Bluetooth access to communicate with devices nearby.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>We need Bluetooth access to connect to peripheral devices.</string>
+
+	<!-- Optional: Allows HTTP traffic for development purposes (not recommended for production) -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+
+	<!-- Apple Sign-In configuration -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+			</array>
+		</dict>
+	</array>
+
+	<!-- Background modes for location and Bluetooth -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+		<string>location</string>
+	</array>
+
+	<!-- Enable Apple Sign-In -->
+	<key>SignInWithApple</key>
+	<true/>
+</dict>
+</plist>

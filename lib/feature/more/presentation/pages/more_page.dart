@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ionhive/feature/more/presentation/pages/bluetooth_connection/bluetooth_connection.dart'; // Bluetooth connection page
-import 'package:ionhive/feature/more/presentation/pages/header/header.dart';
-import 'package:ionhive/feature/more/presentation/pages/help&support/help_support.dart';
-import 'package:ionhive/feature/more/presentation/pages/main_card/main_card.dart';
-import 'package:ionhive/feature/more/presentation/pages/manage/manage.dart';
-import 'package:ionhive/feature/more/presentation/pages/notification/notification.dart';
-import 'package:ionhive/feature/more/presentation/pages/trip/trip.dart';
 import 'package:package_info_plus/package_info_plus.dart'; // to Get Package Info
-
 import 'package:ionhive/core/controllers/session_controller.dart'; // Session Controller
-import 'package:ionhive/feature/more/presentation/pages/account/account.dart';
+
+import 'package:ionhive/feature/more/presentation/pages/header/header.dart'; // Header
+import 'package:ionhive/feature/more/presentation/pages/main_card/main_card.dart'; // Main
+import 'package:ionhive/feature/more/presentation/pages/manage/manage.dart'; // manage All
+import 'package:ionhive/feature/more/presentation/pages/trip/trip.dart'; // Trip
+import 'package:ionhive/feature/more/presentation/pages/notification/notification.dart'; // Notifications
+import 'package:ionhive/feature/more/presentation/pages/bluetooth_connection/bluetooth_connection.dart'; // Bluetooth connection page
+import 'package:ionhive/feature/more/presentation/pages/help&support/help_support.dart'; // Help and Support
+import 'package:ionhive/feature/more/presentation/pages/account/account.dart'; // Account
 
 class MoreePage extends StatelessWidget {
   MoreePage({super.key});

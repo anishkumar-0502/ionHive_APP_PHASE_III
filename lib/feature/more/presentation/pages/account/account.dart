@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart'; // Ensure you have GetX imported for Get.find() and Get.offAll()
 import 'package:ionhive/core/controllers/session_controller.dart';
 import 'package:ionhive/feature/auth/presentation/pages/login_page.dart';
+import 'package:ionhive/feature/more/presentation/pages/account/presentation/pages/account_privacy_page.dart';
 
 // Account Management Card Widget
 class AccountManagementCard extends StatelessWidget {
@@ -46,8 +47,7 @@ class AccountManagementCard extends StatelessWidget {
                 Icons.lock,
                 theme,
                 onTap: () {
-                  // Navigate to the Bluetooth page
-                  // Get.to(() => BluetoothPage());
+                  Get.to(() => AccountAndPrivacyPage());
                 },
               ),
               _buildMenuOption(

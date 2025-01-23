@@ -22,8 +22,6 @@ class SelectReasonDropdown extends StatelessWidget {
           color: theme.colorScheme.onSecondary,
           fontWeight: FontWeight.w300,
         ),
-        errorText:
-            selectedReason.value.isEmpty ? 'Please select a reason' : null,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(color: theme.colorScheme.primary),
@@ -49,15 +47,56 @@ class SelectReasonDropdown extends StatelessWidget {
               value: selectedReason.value.isEmpty ? null : selectedReason.value,
               hint: const Text("Select Reason"),
               items: reasons.map((reason) {
-                return DropdownMenuItem(
+                return DropdownMenuItem<String>(
                   value: reason,
-                  child: Text(reason),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: theme.dividerColor,
+                        width: 1,
+                      ),
+                      color: selectedReason.value == reason
+                          ? theme.colorScheme.primary.withOpacity(0.1)
+                          : Colors.transparent,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 16.0),
+                      child: Row(
+                        children: [
+                          // Optional Icon - you can use any icons or remove this
+                          Icon(
+                            Icons.check_circle,
+                            size: 18,
+                            color: selectedReason.value == reason
+                                ? theme.primaryColor
+                                : theme.colorScheme.onSurface.withOpacity(0.7),
+                          ),
+                          const SizedBox(width: 10),
+                          // Reason Text wrapped in Expanded to avoid overflow
+                          Expanded(
+                            child: Text(
+                              reason,
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: selectedReason.value == reason
+                                    ? theme.primaryColor
+                                    : theme.colorScheme.onSurface,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              overflow:
+                                  TextOverflow.ellipsis, // Truncate long text
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 );
               }).toList(),
               onChanged: (value) {
-                if (value != null) {
-                  selectedReason.value = value;
-                }
+                selectedReason.value = value ?? '';
               },
               iconSize: 30,
               icon: AnimatedSwitcher(

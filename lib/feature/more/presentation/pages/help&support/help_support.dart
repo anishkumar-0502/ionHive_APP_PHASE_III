@@ -31,11 +31,23 @@ class HelpandSupportcard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              _buildMenuOption('Contact Us', Icons.contact_emergency, theme),
+              _buildMenuOption(
+                'Contact Us',
+                Icons.contact_emergency,
+                theme,
+                onTap: () {
+                  // Navigate to the Bluetooth page
+                  // Get.to(() => BluetoothPage());
+                },
+              ),
               _buildMenuOption(
                 "FAQ's",
                 Icons.question_answer_outlined,
                 theme,
+                onTap: () {
+                  // Navigate to the Bluetooth page
+                  // Get.to(() => BluetoothPage());
+                },
               ),
             ],
           ),

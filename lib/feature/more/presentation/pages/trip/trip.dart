@@ -31,7 +31,15 @@ class TripCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              _buildMenuOption('Saved Trips', Icons.directions, theme),
+              _buildMenuOption(
+                'Saved Trips',
+                Icons.directions,
+                theme,
+                onTap: () {
+                  // Navigate to the Bluetooth page
+                  // Get.to(() => BluetoothPage());
+                },
+              ),
             ],
           ),
         ),

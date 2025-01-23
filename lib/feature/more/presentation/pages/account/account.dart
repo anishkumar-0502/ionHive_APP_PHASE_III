@@ -41,7 +41,15 @@ class AccountManagementCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              _buildMenuOption('Account Privacy', Icons.lock, theme),
+              _buildMenuOption(
+                'Account Privacy',
+                Icons.lock,
+                theme,
+                onTap: () {
+                  // Navigate to the Bluetooth page
+                  // Get.to(() => BluetoothPage());
+                },
+              ),
               _buildMenuOption(
                 'Logout',
                 Icons.exit_to_app,

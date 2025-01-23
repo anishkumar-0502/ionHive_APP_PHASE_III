@@ -31,9 +31,33 @@ class ManageAllCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              _buildMenuOption('Vehicle', Icons.directions_car, theme),
-              _buildMenuOption('RFID', Icons.nfc, theme),
-              _buildMenuOption('Devices', Icons.devices, theme),
+              _buildMenuOption(
+                'Vehicle',
+                Icons.directions_car,
+                theme,
+                onTap: () {
+                  // Navigate to the Bluetooth page
+                  // Get.to(() => BluetoothPage());
+                },
+              ),
+              _buildMenuOption(
+                'RFID',
+                Icons.nfc,
+                theme,
+                onTap: () {
+                  // Navigate to the Bluetooth page
+                  // Get.to(() => BluetoothPage());
+                },
+              ),
+              _buildMenuOption(
+                'Devices',
+                Icons.devices,
+                theme,
+                onTap: () {
+                  // Navigate to the Bluetooth page
+                  // Get.to(() => BluetoothPage());
+                },
+              ),
             ],
           ),
         ),

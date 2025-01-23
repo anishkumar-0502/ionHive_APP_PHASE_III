@@ -17,8 +17,15 @@ class NotificationCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildMenuOption('Notifications',
-                  Icons.notification_important_outlined, theme),
+              _buildMenuOption(
+                'Notifications',
+                Icons.notification_important_outlined,
+                theme,
+                onTap: () {
+                  // Navigate to the Bluetooth page
+                  // Get.to(() => BluetoothPage());
+                },
+              ),
             ],
           ),
         ),

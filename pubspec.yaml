@@ -23,6 +23,7 @@ dependencies:
   webview_flutter: ^4.10.0
   google_sign_in: ^6.2.2
   sign_in_with_apple: ^6.1.4
+  flutter_blue_classic: ^0.0.3 #TODO - For bluetooth devices connection
   
 
 dev_dependencies:

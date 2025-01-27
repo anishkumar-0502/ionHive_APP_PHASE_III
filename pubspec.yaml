@@ -24,7 +24,7 @@ dependencies:
   google_sign_in: ^6.2.2
   sign_in_with_apple: ^6.1.4
   flutter_blue_classic: ^0.0.3 #TODO - For bluetooth devices connection
-  
+  webview_flutter_wkwebview: ^3.17.0
 
 dev_dependencies:
   flutter_test:
@@ -36,7 +36,7 @@ flutter:
 
   assets:
     - assets/ionHive_logo's/ionHive.png
-    - assets/banner/profile_banner.png
+    - assets/banner/car_banner.png
 
 flutter_native_splash:
   color: "#000000" 

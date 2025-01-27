@@ -12,33 +12,38 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context); // Get the current theme
+    final theme = Theme.of(context);
 
-    return BottomNavigationBar(
-      currentIndex: currentIndex, // Highlight the selected tab
-      onTap: onTabChanged, // Call onTabChanged when a tab is clicked
-      selectedItemColor: theme.primaryColor, // Use the theme's primary color
-      unselectedItemColor: theme.iconTheme.color, // Use unselected icon color
-      backgroundColor: theme.scaffoldBackgroundColor, // Match the theme
-      elevation: 0, // Remove shadow effect
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.account_balance_wallet_outlined),
-          label: 'Wallet',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.map_outlined),
-          label: 'Trip',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.more_horiz_sharp),
-          label: 'More',
-        ),
-      ],
+    return Container(
+      margin: EdgeInsets.zero,
+      padding: EdgeInsets.zero,
+      child: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: currentIndex, // Highlight the selected tab
+        onTap: onTabChanged, // Callback when a tab is clicked
+        selectedItemColor: theme.primaryColor,
+        unselectedItemColor: theme.iconTheme.color,
+        backgroundColor: theme.scaffoldBackgroundColor,
+        elevation: 0,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance_wallet_outlined),
+            label: 'Wallet',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map_outlined),
+            label: 'Trip',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.more_horiz_sharp),
+            label: 'More',
+          ),
+        ],
+      ),
     );
   }
 }

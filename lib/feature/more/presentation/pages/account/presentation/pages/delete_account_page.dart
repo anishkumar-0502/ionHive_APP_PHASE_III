@@ -49,7 +49,7 @@ class DeleteAccountPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 if (controller.selectedReason.value.isEmpty) {
-                  Get.snackbar("Error", "Please select a reason to proceed.",
+                  Get.snackbar("Note", "Please select a reason to proceed.",
                       snackPosition: SnackPosition.BOTTOM);
                 } else {
                   controller.deleteAccount();

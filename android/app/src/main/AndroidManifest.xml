@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.outdidev.ev_app">
+    package="com.outdidev.ionhive">
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,15 +18,12 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
 
-    <!-- Bluetooth permissions for devices below Android 12 -->
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-
     <application
         android:label="ionhive"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:enableOnBackInvokedCallback="true">
 
         <!-- Main Activity -->
         <activity

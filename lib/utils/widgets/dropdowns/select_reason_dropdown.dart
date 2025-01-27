@@ -65,16 +65,7 @@ class SelectReasonDropdown extends StatelessWidget {
                           vertical: 10.0, horizontal: 16.0),
                       child: Row(
                         children: [
-                          // Optional Icon - you can use any icons or remove this
-                          Icon(
-                            Icons.check_circle,
-                            size: 18,
-                            color: selectedReason.value == reason
-                                ? theme.primaryColor
-                                : theme.colorScheme.onSurface.withOpacity(0.7),
-                          ),
                           const SizedBox(width: 10),
-                          // Reason Text wrapped in Expanded to avoid overflow
                           Expanded(
                             child: Text(
                               reason,
@@ -85,8 +76,7 @@ class SelectReasonDropdown extends StatelessWidget {
                                     : theme.colorScheme.onSurface,
                                 fontWeight: FontWeight.w500,
                               ),
-                              overflow:
-                                  TextOverflow.ellipsis, // Truncate long text
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ],
@@ -99,14 +89,9 @@ class SelectReasonDropdown extends StatelessWidget {
                 selectedReason.value = value ?? '';
               },
               iconSize: 30,
-              icon: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 300),
-                child: Icon(
-                  selectedReason.value.isEmpty
-                      ? Icons.arrow_drop_down
-                      : Icons.check_circle,
-                  key: ValueKey(selectedReason.value),
-                ),
+              icon: Icon(
+                Icons.arrow_drop_down,
+                color: theme.colorScheme.onSurface,
               ),
             );
           },

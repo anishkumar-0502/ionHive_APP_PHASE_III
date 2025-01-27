@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../core/components/footer.dart'; // Footer Component
-
 import 'package:ionhive/feature/landing_page_controller.dart'; // Landing page controller
 import 'package:ionhive/feature/home/presentation/pages/home_page.dart'; // Home page
 import 'package:ionhive/feature/wallet/presentation/pages/wallet_page.dart'; // Wallet page
@@ -24,10 +23,10 @@ class LandingPage extends StatelessWidget {
           controller.changePage(index); // Update the page index
         },
         children: [
-          const HomePage(),
-          const WalletPage(),
-          const TripMapPage(),
-          MoreePage(),
+          const HomePage(), // Home page (index 0)
+          const WalletPage(), // Wallet page (index 1)
+          const TripMapPage(), // Trip page (index 2)
+          MoreePage(), // More page (index 3)
         ],
       ),
       bottomNavigationBar: Obx(

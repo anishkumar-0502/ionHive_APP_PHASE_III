@@ -1,5 +1,5 @@
 import 'package:ionhive/feature/auth/data/api.dart'; // Api data
-import 'package:ionhive/feature/auth/domain/models/user_model.dart'; // Models
+import 'package:ionhive/feature/auth/domain/models/auth_model.dart'; // Models
 
 class AuthRepository {
   final AuthAPICalls _api = AuthAPICalls();

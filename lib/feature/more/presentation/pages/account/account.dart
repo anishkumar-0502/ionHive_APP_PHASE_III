@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart'; // Ensure you have GetX imported for Get.find() and Get.offAll()
 import 'package:ionhive/core/controllers/session_controller.dart';
 import 'package:ionhive/feature/auth/presentation/pages/login_page.dart';
+import 'package:ionhive/feature/landing_page_controller.dart';
 import 'package:ionhive/feature/more/presentation/pages/account/presentation/pages/account_privacy_page.dart';
 
 // Account Management Card Widget
@@ -12,6 +13,10 @@ class AccountManagementCard extends StatelessWidget {
 
 // Function to handle logout
   void handleLogout() {
+    final landingPageController = Get.find<LandingPageController>();
+
+    // Clear the page index
+    landingPageController.clearPageIndex();
     Get.find<SessionController>().clearSession();
     Get.offAll(() => LoginPage());
   }

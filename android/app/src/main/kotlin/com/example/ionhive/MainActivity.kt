@@ -1,4 +1,4 @@
-package com.outdidev.ev_app
+package com.outdidev.ionhive
 
 import io.flutter.embedding.android.FlutterActivity
 

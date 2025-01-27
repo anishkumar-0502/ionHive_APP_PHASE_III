@@ -1,5 +1,5 @@
 import 'package:ionhive/feature/more/presentation/pages/account/data/api.dart';
-import 'package:ionhive/feature/more/presentation/pages/account/domain/models/account_models.dart';
+import 'package:ionhive/feature/more/presentation/pages/account/domain/models/account_model.dart';
 
 class AccountRepository {
   final AccountAPICalls _api = AccountAPICalls();

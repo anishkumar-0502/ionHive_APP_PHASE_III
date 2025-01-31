@@ -20,7 +20,6 @@ void main() async {
 
   final sessionController = Get.put(SessionController());
   await sessionController.loadSession(); // Load session data
-
   runApp(const IonHive());
 }
 

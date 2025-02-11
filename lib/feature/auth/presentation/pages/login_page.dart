@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionhive/feature/auth/presentation/controllers/auth_controller.dart'; // Auth controller
 import 'package:ionhive/utils/widgets/button/custom_button.dart'; // Custom button
-import 'package:ionhive/utils/widgets/input_field/email_input.dart'; // Email input field
+import 'package:ionhive/utils/widgets/input_field/email_inputfield.dart'; // Email input field
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart'; // Ensure you have GetX imported for Get.find() and Get.offAll()
 import 'package:ionhive/core/controllers/session_controller.dart';
+import 'package:ionhive/feature/more/presentation/pages/header/presentation/controllers/controller.dart';
+import 'package:ionhive/utils/widgets/button/custom_button.dart';
+import 'package:ionhive/utils/widgets/input_field/phonenumber_inputfield.dart';
+import 'package:ionhive/utils/widgets/input_field/username_inputfield.dart';
 
 class HeaderCard extends StatelessWidget {
   final ThemeData theme;
 
   HeaderCard({super.key, required this.theme});
   final sessionController = Get.find<SessionController>();
+  final controller = Get.put(HeaderController());
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +39,11 @@ class HeaderCard extends StatelessWidget {
                       backgroundColor:
                           theme.primaryColorLight, // Theme-based background
                       child: Obx(() {
+                        String email = sessionController.emailId.value;
                         return Text(
-                          sessionController.emailId.value[0].toUpperCase(),
+                          email.isNotEmpty
+                              ? email[0].toUpperCase()
+                              : '?', // Default to '?' if empty
                           style: TextStyle(
                             fontSize: 36,
                             fontWeight: FontWeight.bold,
@@ -51,6 +59,8 @@ class HeaderCard extends StatelessWidget {
                     right: 0,
                     child: GestureDetector(
                       onTap: () {
+                        showEditProfileDialog(context);
+
                         // Navigate to the Edit Profile page
                       },
                       child: CircleAvatar(
@@ -74,11 +84,13 @@ class HeaderCard extends StatelessWidget {
                   children: [
                     Obx(() {
                       return Text(
-                        sessionController.username.value,
+                        sessionController.username.value.isNotEmpty
+                            ? sessionController.username.value
+                            : 'Complete your profile',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: theme.textTheme.headlineSmall?.color,
+                          color: theme.primaryColor,
                         ),
                       );
                     }),
@@ -97,7 +109,7 @@ class HeaderCard extends StatelessWidget {
                       "Status: Active",
                       style: TextStyle(
                         fontSize: 14,
-                        color: theme.textTheme.bodyMedium?.color,
+                        color: theme.primaryColor,
                       ),
                     ),
                   ],
@@ -107,6 +119,70 @@ class HeaderCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void showEditProfileDialog(BuildContext context) {
+    final controller = Get.find<HeaderController>();
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(
+            left: 16,
+            right: 16,
+            bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+            top: 16,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Slide Indicator
+              Container(
+                width: 40,
+                height: 5,
+                decoration: BoxDecoration(
+                  color: Colors.grey[400],
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              const SizedBox(height: 8),
+
+              const Text(
+                "Complete your profile",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 12),
+
+              UsernameInputField(
+                controller: controller.usernameController,
+              ),
+              const SizedBox(height: 12),
+
+              // Using Custom Phone Number Input Widget
+              AdvancedPhoneNumberInput(
+                controller: controller.phoneNumberController,
+                onChanged: (phone) {},
+                onCountryChanged: (countryCode) {},
+              ),
+              const SizedBox(height: 16),
+
+              // Custom Button for Save
+              CustomButton(
+                text: "Save",
+                onPressed: () {
+                  controller.updateProfile();
+                },
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

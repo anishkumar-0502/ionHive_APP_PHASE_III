@@ -25,6 +25,7 @@ dependencies:
   sign_in_with_apple: ^6.1.4
   flutter_blue_classic: ^0.0.3 #TODO - For bluetooth devices connection
   webview_flutter_wkwebview: ^3.17.0
+  intl_phone_field: ^3.2.0
 
 dev_dependencies:
   flutter_test:

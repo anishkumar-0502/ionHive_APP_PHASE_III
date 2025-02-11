@@ -31,13 +31,18 @@ class SessionController extends GetxController {
     required int userId,
     required String emailId,
     required String token,
+    String? username,
   }) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isLoggedIn', true);
     await prefs.setInt('userId', userId);
     await prefs.setString('emailId', emailId);
     await prefs.setString('token', token);
-
+    // Only save username if it's not null
+    if (username != null && username.isNotEmpty) {
+      await prefs.setString('username', username);
+      this.username.value = username; // Update username only if provided
+    }
     isLoggedIn.value = true;
     this.userId.value = userId;
     this.emailId.value = emailId;

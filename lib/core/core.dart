@@ -5,9 +5,13 @@ class iOnHiveCore {
   // static const String prodBaseUrl = 'http://122.166.210.142:4444';
   // static const String devBaseUrl = 'http://122.166.210.142:4444';
   // static const String testingBaseUrl = 'http://192.168.1.32:4444';
-  static const String prodBaseUrl = 'http://192.168.1.7:3003';
-  static const String devBaseUrl = 'http://192.168.1.7:3003';
-  static const String testingBaseUrl = 'http://192.168.1.7:3003';
+  // static const String prodBaseUrl = 'http://192.168.1.7:3003';
+  // static const String devBaseUrl = 'http://192.168.1.7:3003';
+  // static const String testingBaseUrl = 'http://192.168.1.7:3003';
+
+  static const String prodBaseUrl = 'http://192.168.1.59:3003';
+  static const String devBaseUrl = 'http://192.168.1.59:3003';
+  static const String testingBaseUrl = 'http://192.168.1.59:3003';
 
   // Dynamically select the base URL based on the environment
   static final String baseUrl = _getBaseUrl();

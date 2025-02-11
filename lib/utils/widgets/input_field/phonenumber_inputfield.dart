@@ -1,71 +1,77 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 
-class PhoneNumberInput extends StatelessWidget {
+class AdvancedPhoneNumberInput extends StatefulWidget {
   final TextEditingController controller;
+  final Function(String)? onChanged;
+  final Function(String)? onCountryChanged;
 
-  const PhoneNumberInput({
+  const AdvancedPhoneNumberInput({
     super.key,
     required this.controller,
+    this.onChanged,
+    this.onCountryChanged,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context); // Access the current theme
+  State<AdvancedPhoneNumberInput> createState() =>
+      _AdvancedPhoneNumberInputState();
+}
 
-    return TextField(
-      controller: controller,
-      inputFormatters: [
-        FilteringTextInputFormatter.digitsOnly,
-        LengthLimitingTextInputFormatter(10), // Allow max 10 digits
-      ],
-      keyboardType: TextInputType.phone,
-      style: theme.textTheme.bodyLarge?.copyWith(
-        fontSize: 16, // Override font size if necessary
-        color: theme.colorScheme.onSurface, // Use the theme's onSurface color
-      ),
+class _AdvancedPhoneNumberInputState extends State<AdvancedPhoneNumberInput> {
+  bool _hasError = false;
+  bool _isValid = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final borderColor = _hasError
+        ? theme.colorScheme.error
+        : _isValid
+            ? theme.colorScheme.primary
+            : theme.dividerColor;
+
+    return IntlPhoneField(
+      controller: widget.controller,
       decoration: InputDecoration(
-        prefixIcon: Icon(
-          Icons.phone,
-          color: theme.primaryColor, // Use the theme's primary color for the icon
-        ),
-        hintText: 'Enter your phone number',
-        hintStyle: theme.textTheme.bodyMedium?.copyWith(
-          color: theme.colorScheme.onSurface.withOpacity(0.5), // Lighter hint color
-        ),
+        labelText: 'Phone Number',
+        labelStyle: theme.textTheme.bodyMedium,
         filled: true,
-        fillColor: theme.brightness == Brightness.light
-            ? Colors.grey.shade100
-            : Colors.grey.shade700, // Adjust based on theme
+        fillColor: theme.colorScheme.surface,
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+        errorText: _hasError ? "Enter a valid phone number" : null,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16), // Rounded input field
-          borderSide: BorderSide.none, // No default border
-        ),
-        focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(
-            color: theme.primaryColor,
-            width: 2.0,
-          ),
+          borderSide: BorderSide(color: borderColor, width: 2.0),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(
-            color: theme.colorScheme.onSurface.withOpacity(0.3), // Subtle border color
-          ),
+          borderSide: BorderSide(color: borderColor, width: 2.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: theme.primaryColor, width: 2.0),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(
-            color: Colors.red.shade300,
-            width: 2.0,
-          ),
-        ),
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 16,
-          horizontal: 20,
+          borderSide: BorderSide(color: theme.colorScheme.error, width: 2.0),
         ),
       ),
+      initialCountryCode: 'IN', // Default to India 🇮🇳
+      onChanged: (phone) {
+        setState(() {
+          _hasError = phone.number.length < 10;
+          _isValid = phone.number.length >= 10;
+        });
+        widget.onChanged?.call(phone.completeNumber);
+      },
+      onCountryChanged: (country) =>
+          widget.onCountryChanged?.call(country.code),
+      keyboardType: TextInputType.phone,
+      style: theme.textTheme.bodyLarge,
+      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
     );
   }
 }

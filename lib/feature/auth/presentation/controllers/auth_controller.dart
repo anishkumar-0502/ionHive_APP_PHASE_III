@@ -147,12 +147,15 @@ class AuthController extends GetxController {
         final token = authenticateResponse.token;
         final userId = authenticateResponse.data?['user_id'];
         final emailId = authenticateResponse.data?['email_id'];
+        final username = authenticateResponse.data?['username'];
+        debugPrint("Session $username || $emailId || $username ");
 
         // Save session details
         final sessionController = Get.find<SessionController>();
         await sessionController.saveSession(
           userId: userId,
           emailId: emailId,
+          username: username,
           token: token!,
         );
 
@@ -235,12 +238,14 @@ class AuthController extends GetxController {
             final token = GoogleSignInResponse.token;
             final userId = GoogleSignInResponse.data?['user_id'];
             final emailId = GoogleSignInResponse.data?['email_id'];
+            final username = GoogleSignInResponse.data?['username'];
 
             // Save session details
             final sessionController = Get.find<SessionController>();
             await sessionController.saveSession(
               userId: userId,
               emailId: emailId,
+              username: username,
               token: token!,
             );
 
@@ -308,12 +313,14 @@ class AuthController extends GetxController {
           final token = appleSignInResponse.token;
           final userId = appleSignInResponse.data?['user_id'];
           final emailId = appleSignInResponse.data?['email_id'];
+          final username = appleSignInResponse.data?['username'];
 
           // Save session details
           final sessionController = Get.find<SessionController>();
           await sessionController.saveSession(
             userId: userId,
             emailId: emailId,
+            username: username,
             token: token!,
           );
 

@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:ionhive/feature/more/presentation/pages/account/data/urls.dart'; // Urls
+import 'package:ionhive/feature/more/presentation/pages/header/data/urls.dart';
 import 'package:ionhive/utils/exception/exception.dart'; // Exception thrown Handler
 
-class AccountAPICalls {
+class HeaderAPICalls {
   String _getDefaultErrorMessage(int statusCode) {
     switch (statusCode) {
       case 400:
@@ -38,9 +38,9 @@ class AccountAPICalls {
     );
   }
 
-  Future<Map<String, dynamic>> DeleteAccount(
-      String email, String reason, int userId, String authToken) async {
-    final url = AccountUrl.DeleteAccount;
+  Future<Map<String, dynamic>> completeProfile(String username, int user_id,
+      String email, int phone_number, String authToken) async {
+    final url = HeaderUrl.CompleteProfile;
 
     try {
       final response = await http
@@ -50,8 +50,12 @@ class AccountAPICalls {
           'Content-Type': 'application/json',
           'Authorization': authToken,
         },
-        body: jsonEncode(
-            {'email_id': email, 'reason': reason, 'user_id': userId}),
+        body: jsonEncode({
+          "username": username,
+          'email_id': email,
+          'phone_number': phone_number,
+          'user_id': user_id
+        }),
       )
           .timeout(const Duration(seconds: 10), onTimeout: () {
         throw TimeoutException(408, 'Request timed out. Please try again.');

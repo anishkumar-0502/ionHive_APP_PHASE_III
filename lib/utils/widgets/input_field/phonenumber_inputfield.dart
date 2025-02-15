@@ -70,6 +70,7 @@ class _AdvancedPhoneNumberInputState extends State<AdvancedPhoneNumberInput> {
       onCountryChanged: (country) =>
           widget.onCountryChanged?.call(country.code),
       keyboardType: TextInputType.phone,
+      
       style: theme.textTheme.bodyLarge,
       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
     );

@@ -37,7 +37,6 @@ flutter:
 
   assets:
     - assets/ionHive_logo's/ionHive.png
-    - assets/banner/car_banner.png
 
 flutter_native_splash:
   color: "#000000" 
